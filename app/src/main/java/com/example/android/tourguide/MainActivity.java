@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        FoodFragment fragment = new FoodFragment();
+        PlacesFragment fragment = new PlacesFragment();
         fragmentTransaction.add(R.id.container, fragment);
         fragmentTransaction.commit();
     }
