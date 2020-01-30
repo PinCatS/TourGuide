@@ -3,8 +3,7 @@ package com.example.android.tourguide;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,12 +12,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        ViewPager viewPager = findViewById(R.id.viewpager);
 
-        PlacesFragment fragment = new PlacesFragment();
-        fragmentTransaction.add(R.id.container, fragment);
-        fragmentTransaction.commit();
+        TourGuidePagerAdapter pageAdapter = new TourGuidePagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(pageAdapter);
     }
 
 }
