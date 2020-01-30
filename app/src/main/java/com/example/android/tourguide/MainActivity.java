@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
         ViewPager viewPager = findViewById(R.id.viewpager);
 
-        TourGuidePagerAdapter pageAdapter = new TourGuidePagerAdapter(getSupportFragmentManager());
+        TourGuideCategoriesPagerAdapter pageAdapter = new TourGuideCategoriesPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(pageAdapter);
 
         TabLayout tabLayout = findViewById(R.id.tab_layout);

@@ -29,7 +29,7 @@ public class PlacesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.food_list, container, false);
+        View rootView = inflater.inflate(R.layout.category_list, container, false);
 
         ArrayList<String> places = new ArrayList<>();
         places.add("Dekabristy");
@@ -43,7 +43,7 @@ public class PlacesFragment extends Fragment {
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
 
-        mAdapter = new FoodAdapter(places);
+        mAdapter = new CardAdapter(places);
         recyclerView.setAdapter(mAdapter);
 
         return rootView;

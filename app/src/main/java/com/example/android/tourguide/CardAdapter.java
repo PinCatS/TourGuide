@@ -9,17 +9,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder> {
+public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FoodViewHolder> {
 
     ArrayList<String> foods;
 
-    public FoodAdapter(ArrayList<String> foods) {
+    public CardAdapter(ArrayList<String> foods) {
         this.foods = foods;
     }
 
     // Create new views (invoked by the layout manager)
     @Override
-    public FoodAdapter.FoodViewHolder onCreateViewHolder(ViewGroup parent,
+    public CardAdapter.FoodViewHolder onCreateViewHolder(ViewGroup parent,
                                                          int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext())

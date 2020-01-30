@@ -29,7 +29,7 @@ public class EventsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.food_list, container, false);
+        View rootView = inflater.inflate(R.layout.category_list, container, false);
 
         ArrayList<String> events = new ArrayList<>();
         events.add("Gazmanov");
@@ -43,7 +43,7 @@ public class EventsFragment extends Fragment {
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
 
-        mAdapter = new FoodAdapter(events);
+        mAdapter = new CardAdapter(events);
         recyclerView.setAdapter(mAdapter);
 
         return rootView;

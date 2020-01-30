@@ -29,7 +29,7 @@ public class RoutesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.food_list, container, false);
+        View rootView = inflater.inflate(R.layout.category_list, container, false);
 
         ArrayList<String> routes = new ArrayList<>();
         routes.add("Petr 1");
@@ -43,7 +43,7 @@ public class RoutesFragment extends Fragment {
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
 
-        mAdapter = new FoodAdapter(routes);
+        mAdapter = new CardAdapter(routes);
         recyclerView.setAdapter(mAdapter);
 
         return rootView;

@@ -4,11 +4,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-public class TourGuidePagerAdapter extends FragmentPagerAdapter {
+public class TourGuideCategoriesPagerAdapter extends FragmentPagerAdapter {
 
     private static final String[] CATEGORY_TITLES = {"Places", "Food", "Events", "Routes"};
 
-    public TourGuidePagerAdapter(FragmentManager fm) {
+    public TourGuideCategoriesPagerAdapter(FragmentManager fm) {
         super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
     }
 
