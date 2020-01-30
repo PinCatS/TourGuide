@@ -6,8 +6,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 public class TourGuidePagerAdapter extends FragmentPagerAdapter {
 
-    private static final int NUM_ITEMS = 2;
-    private static final String[] CATEGORY_TITLES = {"Places", "Food"};
+    private static final String[] CATEGORY_TITLES = {"Places", "Food", "Events", "Routes"};
 
     public TourGuidePagerAdapter(FragmentManager fm) {
         super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
@@ -15,15 +14,19 @@ public class TourGuidePagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return NUM_ITEMS;
+        return CATEGORY_TITLES.length;
     }
 
     @Override
     public Fragment getItem(int position) {
         if (position == 0) {
             return new PlacesFragment();
-        } else {
+        } else if (position == 1) {
             return new FoodFragment();
+        } else if (position == 2) {
+            return new EventsFragment();
+        } else {
+            return new RoutesFragment();
         }
     }
 
