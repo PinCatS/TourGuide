@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.google.android.material.tabs.TabLayout;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -16,6 +18,9 @@ public class MainActivity extends AppCompatActivity {
 
         TourGuidePagerAdapter pageAdapter = new TourGuidePagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(pageAdapter);
+
+        TabLayout tabLayout = findViewById(R.id.tab_layout);
+        tabLayout.setupWithViewPager(viewPager);
     }
 
 }

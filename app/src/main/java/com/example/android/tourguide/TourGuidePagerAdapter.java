@@ -6,7 +6,8 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 public class TourGuidePagerAdapter extends FragmentPagerAdapter {
 
-    static final int NUM_ITEMS = 5;
+    private static final int NUM_ITEMS = 2;
+    private static final String[] CATEGORY_TITLES = {"Places", "Food"};
 
     public TourGuidePagerAdapter(FragmentManager fm) {
         super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
@@ -24,6 +25,11 @@ public class TourGuidePagerAdapter extends FragmentPagerAdapter {
         } else {
             return new FoodFragment();
         }
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return CATEGORY_TITLES[position];
     }
 
 }
