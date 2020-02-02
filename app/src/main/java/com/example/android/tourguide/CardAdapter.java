@@ -3,30 +3,33 @@ package com.example.android.tourguide;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FoodViewHolder> {
 
-    ArrayList<String> foods;
+    ArrayList<GuideCard> cards;
 
-    public CardAdapter(ArrayList<String> foods) {
-        this.foods = foods;
+    CardAdapter(ArrayList<GuideCard> cards) {
+        this.cards = cards;
     }
 
     // Create new views (invoked by the layout manager)
+    @NonNull
     @Override
     public CardAdapter.FoodViewHolder onCreateViewHolder(ViewGroup parent,
                                                          int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.food_item, parent, false);
+                .inflate(R.layout.card_item, parent, false);
 
-        FoodViewHolder vh = new FoodViewHolder(v);
-        return vh;
+        return new FoodViewHolder(v);
     }
 
     // Replace the contents of a view (invoked by the layout manager)
@@ -34,21 +37,34 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FoodViewHolder
     public void onBindViewHolder(FoodViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.cardTitle.setText(foods.get(position));
+        GuideCard card = cards.get(position);
+        holder.cardTitle.setText(card.getTitle());
+        holder.cardDescription.setText(card.getDescription());
+        holder.cardImage.setImageResource(card.getImageResourceId());
+        holder.cardRateValue.setText(String.format(Locale.ENGLISH, "%.1f", card.getRate()));
+        holder.cardReviewsCount.setText(holder.cardReviewsCount.getContext().getString(R.string.reviews_count_string, card.getNumberOfReviews()));
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return foods.size();
+        return cards.size();
     }
 
-    public static class FoodViewHolder extends RecyclerView.ViewHolder {
-        public TextView cardTitle;
+    static class FoodViewHolder extends RecyclerView.ViewHolder {
+        TextView cardTitle;
+        TextView cardDescription;
+        ImageView cardImage;
+        TextView cardRateValue;
+        TextView cardReviewsCount;
 
-        public FoodViewHolder(View v) {
+        FoodViewHolder(View v) {
             super(v);
-            cardTitle = v.findViewById(R.id.card_text);
+            cardTitle = v.findViewById(R.id.card_title);
+            cardDescription = v.findViewById(R.id.card_description);
+            cardImage = v.findViewById(R.id.card_image);
+            cardRateValue = v.findViewById(R.id.card_rate_value);
+            cardReviewsCount = v.findViewById(R.id.card_comments_count);
         }
     }
 

@@ -31,10 +31,10 @@ public class FoodFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.category_list, container, false);
 
-        ArrayList<String> foods = new ArrayList<>();
-        foods.add("Pizza");
-        foods.add("Pelmeni");
-        foods.add("Avocado");
+        ArrayList<GuideCard> foods = new ArrayList<>();
+        foods.add(new GuideCard("C.A.K.E", R.drawable.cake_image, getString(R.string.cake_confectionary_description)));
+        foods.add(new GuideCard("Ресторан «Терраса»", R.drawable.terrasa, getString(R.string.terrasa_restaurant_description)));
+        foods.add(new GuideCard("Rыба", R.drawable.ryba, getString(R.string.ryba_restaurant_description)));
 
         recyclerView = rootView.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
