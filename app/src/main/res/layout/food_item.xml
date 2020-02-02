@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -10,13 +11,66 @@
         android:layout_marginLeft="@dimen/mtrl_card_spacing"
         android:layout_marginTop="@dimen/mtrl_card_spacing"
         android:layout_marginRight="@dimen/mtrl_card_spacing"
-        android:minHeight="200dp">
+        android:minHeight="510dp">
 
-        <TextView
-            android:id="@+id/card_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="That is the card" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="194dp"
+                android:background="@android:color/holo_green_dark" />
+
+            <TextView
+                android:id="@+id/card_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingTop="16dp"
+                android:textSize="24sp"
+                tools:text="Title" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingTop="4dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/holo_orange_dark" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    tools:text="4.5(413)" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingTop="8dp"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:text="Secondary text" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingTop="4dp"
+                android:paddingRight="24dp"
+                android:textSize="14sp"
+                tools:text="Lorem ipsum or ome description of the restaurant or event" />
+
+        </LinearLayout>
+
     </com.google.android.material.card.MaterialCardView>
 
 </LinearLayout>
