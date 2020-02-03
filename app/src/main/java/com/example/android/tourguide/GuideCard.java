@@ -1,6 +1,8 @@
 package com.example.android.tourguide;
 
-public class GuideCard {
+import java.io.Serializable;
+
+public class GuideCard implements Serializable {
     private String mTitle;
     private int mImageResourceId;
     private float mRate = 0;

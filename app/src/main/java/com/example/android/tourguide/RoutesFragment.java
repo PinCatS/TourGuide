@@ -1,11 +1,11 @@
 package com.example.android.tourguide;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -48,7 +48,10 @@ public class RoutesFragment extends Fragment {
             @Override
             public void onClick(View view, int position) {
                 GuideCard card = routes.get(position);
-                Toast.makeText(getContext(), "Card: " + card.getTitle(), Toast.LENGTH_SHORT).show();
+
+                Intent routesIntent = new Intent(getActivity(), DetailsActivity.class);
+                routesIntent.putExtra("EXTRA_PLACE_OBJECT", card);
+                startActivity(routesIntent);
             }
         };
 

@@ -1,13 +1,13 @@
 package com.example.android.tourguide;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -58,7 +58,10 @@ public class FoodFragment extends Fragment {
             @Override
             public void onClick(View view, int position) {
                 GuideCard card = foods.get(position);
-                Toast.makeText(getContext(), "Card: " + card.getTitle(), Toast.LENGTH_SHORT).show();
+
+                Intent foodsIntent = new Intent(getActivity(), DetailsActivity.class);
+                foodsIntent.putExtra("EXTRA_PLACE_OBJECT", card);
+                startActivity(foodsIntent);
             }
         };
 
