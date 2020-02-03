@@ -16,9 +16,11 @@ import java.util.Locale;
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FoodViewHolder> {
 
     ArrayList<GuideCard> cards;
+    RecyclerViewClickListener mListener;
 
-    CardAdapter(ArrayList<GuideCard> cards) {
+    CardAdapter(ArrayList<GuideCard> cards, RecyclerViewClickListener listener) {
         this.cards = cards;
+        this.mListener = listener;
     }
 
     // Create new views (invoked by the layout manager)
@@ -30,7 +32,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FoodViewHolder
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.card_item, parent, false);
 
-        return new FoodViewHolder(v);
+        return new FoodViewHolder(v, mListener);
     }
 
     // Replace the contents of a view (invoked by the layout manager)
@@ -53,16 +55,19 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FoodViewHolder
         return cards.size();
     }
 
-    static class FoodViewHolder extends RecyclerView.ViewHolder {
+    static class FoodViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView cardTitle;
         TextView cardDescription;
         ImageView cardImage;
         TextView cardRateValue;
         TextView cardReviewsCount;
         RatingBar indicatorRatingBar;
+        RecyclerViewClickListener mListener;
 
-        FoodViewHolder(View v) {
+        FoodViewHolder(View v, RecyclerViewClickListener listener) {
             super(v);
+            mListener = listener;
+            v.setOnClickListener(this);
             cardTitle = v.findViewById(R.id.card_title);
             cardDescription = v.findViewById(R.id.card_description);
             cardImage = v.findViewById(R.id.card_image);
@@ -70,6 +75,12 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FoodViewHolder
             cardReviewsCount = v.findViewById(R.id.card_comments_count);
             indicatorRatingBar = v.findViewById(R.id.ratingBar_indicator);
         }
+
+        @Override
+        public void onClick(View view) {
+            mListener.onClick(view, getAdapterPosition());
+        }
+
     }
 
 }

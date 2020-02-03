@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -31,7 +32,7 @@ public class PlacesFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.category_list, container, false);
 
-        ArrayList<GuideCard> places = new ArrayList<>();
+        final ArrayList<GuideCard> places = new ArrayList<>();
         places.add(new GuideCard("C.A.K.E", R.drawable.cake_image, getString(R.string.cake_confectionary_description), 4.8f, 56));
         places.add(new GuideCard("Ресторан «Терраса»", R.drawable.terrasa, getString(R.string.terrasa_restaurant_description), 4.5f, 39));
         places.add(new GuideCard("Rыба", R.drawable.ryba, getString(R.string.ryba_restaurant_description), 4.7f, 62));
@@ -43,7 +44,15 @@ public class PlacesFragment extends Fragment {
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
 
-        mAdapter = new CardAdapter(places);
+        RecyclerViewClickListener listener = new RecyclerViewClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                GuideCard card = places.get(position);
+                Toast.makeText(getContext(), "Card: " + card.getTitle(), Toast.LENGTH_SHORT).show();
+            }
+        };
+
+        mAdapter = new CardAdapter(places, listener);
         recyclerView.setAdapter(mAdapter);
 
         return rootView;
