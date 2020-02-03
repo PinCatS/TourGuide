@@ -43,9 +43,9 @@ public class EventsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.category_list, container, false);
 
         final ArrayList<GuideCard> events = new ArrayList<>();
-        events.add(new GuideCard("C.A.K.E", R.drawable.cake_image, getString(R.string.cake_confectionary_description)));
-        events.add(new GuideCard("Ресторан «Терраса»", R.drawable.terrasa, getString(R.string.terrasa_restaurant_description)));
-        events.add(new GuideCard("Rыба", R.drawable.ryba, getString(R.string.ryba_restaurant_description)));
+        events.add(new GuideCard("C.A.K.E", R.drawable.cake_image, getString(R.string.cake_confectionary_description), "events"));
+        events.add(new GuideCard("Ресторан «Терраса»", R.drawable.terrasa, getString(R.string.terrasa_restaurant_description), "events"));
+        events.add(new GuideCard("Rыба", R.drawable.ryba, getString(R.string.ryba_restaurant_description), "events"));
 
         recyclerView = rootView.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
