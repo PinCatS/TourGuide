@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -43,6 +44,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FoodViewHolder
         holder.cardImage.setImageResource(card.getImageResourceId());
         holder.cardRateValue.setText(String.format(Locale.ENGLISH, "%.1f", card.getRate()));
         holder.cardReviewsCount.setText(holder.cardReviewsCount.getContext().getString(R.string.reviews_count_string, card.getNumberOfReviews()));
+        holder.indicatorRatingBar.setRating(card.getRate());
     }
 
     // Return the size of your dataset (invoked by the layout manager)
@@ -57,6 +59,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FoodViewHolder
         ImageView cardImage;
         TextView cardRateValue;
         TextView cardReviewsCount;
+        RatingBar indicatorRatingBar;
 
         FoodViewHolder(View v) {
             super(v);
@@ -65,6 +68,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FoodViewHolder
             cardImage = v.findViewById(R.id.card_image);
             cardRateValue = v.findViewById(R.id.card_rate_value);
             cardReviewsCount = v.findViewById(R.id.card_comments_count);
+            indicatorRatingBar = v.findViewById(R.id.ratingBar_indicator);
         }
     }
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -11,17 +12,17 @@
         android:layout_marginLeft="@dimen/mtrl_card_spacing"
         android:layout_marginTop="@dimen/mtrl_card_spacing"
         android:layout_marginRight="@dimen/mtrl_card_spacing"
+        app:cardElevation="2dp"
         android:minHeight="510dp">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/card_image"
                 android:layout_width="match_parent"
-                android:layout_height="194dp"
+                android:layout_height="240dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/cake_image" />
 
@@ -29,23 +30,30 @@
                 android:id="@+id/card_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/card_image"
                 android:paddingLeft="16dp"
                 android:paddingTop="16dp"
                 android:textSize="24sp"
                 tools:text="Title" />
 
             <LinearLayout
+                android:id="@+id/card_rating_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_below="@+id/card_title"
                 android:paddingLeft="16dp"
                 android:paddingTop="4dp">
 
-                <ImageView
-                    android:id="@+id/card_rate"
+                <RatingBar
+                    android:id="@+id/ratingBar_indicator"
+                    style="?android:attr/ratingBarStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@android:color/holo_orange_dark" />
+                    android:isIndicator="true"
+                    android:max="5"
+                    android:progressBackgroundTint="@android:color/darker_gray"
+                    android:progressTint="@android:color/holo_orange_light" />
 
                 <TextView
                     android:id="@+id/card_rate_value"
@@ -63,26 +71,17 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/card_subtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="16dp"
-                android:paddingTop="8dp"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                tools:text="Secondary text" />
-
-            <TextView
                 android:id="@+id/card_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/card_rating_layout"
                 android:paddingLeft="16dp"
                 android:paddingTop="4dp"
                 android:paddingRight="24dp"
                 android:textSize="14sp"
                 tools:text="Lorem ipsum or ome description of the restaurant or event" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
     </com.google.android.material.card.MaterialCardView>
 

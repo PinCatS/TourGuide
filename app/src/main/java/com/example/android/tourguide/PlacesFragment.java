@@ -32,9 +32,9 @@ public class PlacesFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.category_list, container, false);
 
         ArrayList<GuideCard> places = new ArrayList<>();
-        places.add(new GuideCard("C.A.K.E", R.drawable.cake_image, getString(R.string.cake_confectionary_description)));
-        places.add(new GuideCard("Ресторан «Терраса»", R.drawable.terrasa, getString(R.string.terrasa_restaurant_description)));
-        places.add(new GuideCard("Rыба", R.drawable.ryba, getString(R.string.ryba_restaurant_description)));
+        places.add(new GuideCard("C.A.K.E", R.drawable.cake_image, getString(R.string.cake_confectionary_description), 4.8f, 56));
+        places.add(new GuideCard("Ресторан «Терраса»", R.drawable.terrasa, getString(R.string.terrasa_restaurant_description), 4.5f, 39));
+        places.add(new GuideCard("Rыба", R.drawable.ryba, getString(R.string.ryba_restaurant_description), 4.7f, 62));
 
         recyclerView = rootView.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
