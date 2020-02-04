@@ -12,12 +12,12 @@
         android:layout_marginLeft="@dimen/mtrl_card_spacing"
         android:layout_marginTop="@dimen/mtrl_card_spacing"
         android:layout_marginRight="@dimen/mtrl_card_spacing"
-        app:cardElevation="2dp"
-        android:minHeight="510dp">
+        app:cardElevation="2dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:paddingBottom="16dp">
 
             <ImageView
                 android:id="@+id/card_image"
@@ -34,52 +34,28 @@
                 android:paddingLeft="16dp"
                 android:paddingTop="16dp"
                 android:textSize="24sp"
+                android:fontFamily="@font/font_family"
                 tools:text="Title" />
 
-            <LinearLayout
-                android:id="@+id/card_rating_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_below="@+id/card_title"
-                android:paddingLeft="16dp"
-                android:paddingTop="4dp">
-
-                <RatingBar
-                    android:id="@+id/ratingBar_indicator"
-                    style="?android:attr/ratingBarStyleSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:isIndicator="true"
-                    android:max="5"
-                    android:progressBackgroundTint="@android:color/darker_gray"
-                    android:progressTint="@android:color/holo_orange_light" />
-
-                <TextView
-                    android:id="@+id/card_rate_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    tools:text="4.5" />
-
-                <TextView
-                    android:id="@+id/card_comments_count"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    tools:text="(413)" />
-            </LinearLayout>
+            <ImageView
+                android:id="@+id/likes_icon"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_below="@id/card_title"
+                android:layout_alignParentEnd="true"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="16dp"
+                android:src="@mipmap/card_like_filled_icon" />
 
             <TextView
-                android:id="@+id/card_description"
+                android:id="@+id/likes_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/card_rating_layout"
-                android:paddingLeft="16dp"
-                android:paddingTop="4dp"
-                android:paddingRight="24dp"
+                android:layout_below="@id/card_title"
+                android:layout_toLeftOf="@id/likes_icon"
+                android:fontFamily="@font/font_family"
                 android:textSize="14sp"
-                tools:text="Lorem ipsum or ome description of the restaurant or event" />
+                tools:text="67" />
 
         </RelativeLayout>
 

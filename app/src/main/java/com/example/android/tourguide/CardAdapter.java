@@ -4,14 +4,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FoodViewHolder> {
 
@@ -42,11 +40,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FoodViewHolder
         // - replace the contents of the view with that element
         GuideCard card = cards.get(position);
         holder.cardTitle.setText(card.getTitle());
-        holder.cardDescription.setText(card.getDescription());
         holder.cardImage.setImageResource(card.getImageResourceId());
-        holder.cardRateValue.setText(String.format(Locale.ENGLISH, "%.1f", card.getRate()));
-        holder.cardReviewsCount.setText(holder.cardReviewsCount.getContext().getString(R.string.reviews_count_string, card.getNumberOfReviews()));
-        holder.indicatorRatingBar.setRating(card.getRate());
+        holder.cardLikes.setText(Integer.toString(card.getLikes()));
     }
 
     // Return the size of your dataset (invoked by the layout manager)
@@ -57,11 +52,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FoodViewHolder
 
     static class FoodViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView cardTitle;
-        TextView cardDescription;
         ImageView cardImage;
-        TextView cardRateValue;
-        TextView cardReviewsCount;
-        RatingBar indicatorRatingBar;
+        TextView cardLikes;
         RecyclerViewClickListener mListener;
 
         FoodViewHolder(View v, RecyclerViewClickListener listener) {
@@ -69,11 +61,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FoodViewHolder
             mListener = listener;
             v.setOnClickListener(this);
             cardTitle = v.findViewById(R.id.card_title);
-            cardDescription = v.findViewById(R.id.card_description);
             cardImage = v.findViewById(R.id.card_image);
-            cardRateValue = v.findViewById(R.id.card_rate_value);
-            cardReviewsCount = v.findViewById(R.id.card_comments_count);
-            indicatorRatingBar = v.findViewById(R.id.ratingBar_indicator);
+            cardLikes = v.findViewById(R.id.likes_count);
         }
 
         @Override

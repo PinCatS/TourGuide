@@ -5,12 +5,10 @@ import java.io.Serializable;
 public class GuideCard implements Serializable {
     private String mTitle;
     private int mImageResourceId;
-    private float mRate = 0;
+    private int mLikes = 0;
     private int mNumberOfReviews = 0;
     private String mDescription;
     private String mCategory;
-
-    private final float MAX_RATE = 5.0f;
 
     GuideCard(String title, int imageResourceId, String description, String category) {
         mTitle = title;
@@ -19,12 +17,12 @@ public class GuideCard implements Serializable {
         mCategory = category;
     }
 
-    GuideCard(String title, int imageResourceId, String description, String category, float rate, int numberOfReview) {
+    GuideCard(String title, int imageResourceId, String description, String category, int likes, int numberOfReview) {
         mTitle = title;
         mImageResourceId = imageResourceId;
         mDescription = description;
         mNumberOfReviews = numberOfReview;
-        mRate = rate > MAX_RATE ? MAX_RATE : rate;
+        mLikes = likes;
         mCategory = category;
     }
 
@@ -36,8 +34,8 @@ public class GuideCard implements Serializable {
         return mImageResourceId;
     }
 
-    float getRate() {
-        return mRate;
+    int getLikes() {
+        return mLikes;
     }
 
     int getNumberOfReviews() {

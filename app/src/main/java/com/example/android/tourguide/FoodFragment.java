@@ -3,11 +3,9 @@ package com.example.android.tourguide;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,14 +25,6 @@ public class FoodFragment extends Fragment {
     public FoodFragment() {
         // Required empty public constructor
     }
-
-    View.OnClickListener clickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            TextView textView = v.findViewById(R.id.card_title);
-            Log.v("FoodFragment.java", "OnClickListener: " + textView.getText());
-        }
-    };
 
 
     @Override
