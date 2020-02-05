@@ -31,6 +31,8 @@ public class DetailsActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -58,7 +60,7 @@ public class DetailsActivity extends AppCompatActivity {
                     toolbarLayout.setTitle(card.getTitle());
                     isShow = true;
                 } else if (isShow) {
-                    toolbarLayout.setTitle(" ");//careful there should a space between double quote otherwise it wont work
+                    toolbarLayout.setTitle(" ");
                     isShow = false;
                 }
             }
