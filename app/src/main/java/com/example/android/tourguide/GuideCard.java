@@ -9,6 +9,7 @@ public class GuideCard implements Serializable {
     private int mNumberOfReviews = 0;
     private String mDescription;
     private String mCategory;
+    private boolean mIsLiked = false;
 
     GuideCard(String title, int imageResourceId, String description, String category) {
         mTitle = title;
@@ -46,7 +47,22 @@ public class GuideCard implements Serializable {
         return mDescription;
     }
 
-    public String getCategory() {
+    String getCategory() {
         return mCategory;
     }
+
+    void like() {
+        mLikes++;
+        mIsLiked = true;
+    }
+
+    void dislike() {
+        mLikes--;
+        mIsLiked = false;
+    }
+
+    boolean isLiked() {
+        return mIsLiked;
+    }
+
 }

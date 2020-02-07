@@ -3,6 +3,7 @@ package com.example.android.tourguide;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -11,7 +12,6 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.viewpagerindicator.CirclePageIndicator;
 
 import java.util.ArrayList;
@@ -35,16 +35,21 @@ public class DetailsActivity extends AppCompatActivity {
         if (getSupportActionBar() != null)
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        final GuideCard card = (GuideCard) getIntent().getSerializableExtra("EXTRA_PLACE_OBJECT");
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                if (card.isLiked()) {
+                    card.dislike();
+                    Toast.makeText(DetailsActivity.this, "Disliked!", Toast.LENGTH_SHORT).show();
+                } else {
+                    card.like();
+                    Toast.makeText(DetailsActivity.this, "Liked!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
-
-        final GuideCard card = (GuideCard) getIntent().getSerializableExtra("EXTRA_PLACE_OBJECT");
 
         final CollapsingToolbarLayout toolbarLayout = findViewById(R.id.toolbar_layout);
         AppBarLayout appBarLayout = findViewById(R.id.app_bar);
@@ -67,16 +72,16 @@ public class DetailsActivity extends AppCompatActivity {
             }
         });
 
+        imageModelArrayList = new ArrayList<>();
+        imageModelArrayList = populateList();
+
+        init();
+
         TextView textView = findViewById(R.id.details_title);
         textView.setText(card.getTitle());
 
         textView = findViewById(R.id.details_description);
         textView.setText(card.getDescription());
-
-        imageModelArrayList = new ArrayList<>();
-        imageModelArrayList = populateList();
-
-        init();
     }
 
     private ArrayList<Integer> populateList() {
