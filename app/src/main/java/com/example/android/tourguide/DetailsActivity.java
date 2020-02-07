@@ -18,6 +18,8 @@ import java.util.ArrayList;
 
 public class DetailsActivity extends AppCompatActivity {
 
+    private int MAX_TITLE_LENGTH = 18;
+
     private static ViewPager mPager;
     private static int currentPage = 0;
     private static int NUM_PAGES = 0;
@@ -63,7 +65,11 @@ public class DetailsActivity extends AppCompatActivity {
                     scrollRange = appBarLayout.getTotalScrollRange();
                 }
                 if (scrollRange + verticalOffset == 0) {
-                    toolbarLayout.setTitle(card.getTitle());
+                    String title = card.getTitle();
+                    if (title.length() > MAX_TITLE_LENGTH) {
+                        title = title.substring(0, MAX_TITLE_LENGTH) + "...";
+                    }
+                    toolbarLayout.setTitle(title);
                     isShow = true;
                 } else if (isShow) {
                     toolbarLayout.setTitle(" ");
