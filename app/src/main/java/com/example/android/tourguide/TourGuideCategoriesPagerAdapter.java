@@ -28,7 +28,7 @@ public class TourGuideCategoriesPagerAdapter extends FragmentPagerAdapter {
         } else if (position == 2) {
             return new EventsFragment();
         } else {
-            return new RoutesFragment();
+            return new ExcursionFragment();
         }
     }
 

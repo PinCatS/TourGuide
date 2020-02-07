@@ -45,8 +45,9 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="50dp"
                     app:centered="true"
-                    app:fillColor="@android:color/holo_orange_dark"
-                    app:pageColor="#fff"
+                    app:fillColor="#ffffffff"
+                    app:pageColor="#44ffffff"
+                    app:strokeColor="#00ffffff"
                     app:snap="false" />
             </RelativeLayout>
 
@@ -67,11 +68,28 @@
         tools:context=".ScrollingActivity"
         tools:showIn="@layout/details_activity">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="some tour description here" />
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/details_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="24sp"
+                tools:text="Бабушкино лукошко" />
+
+            <TextView
+                android:id="@+id/details_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                tools:text="some tour description here" />
+
+        </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 
@@ -80,8 +98,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:backgroundTint="#f44336"
+        app:borderWidth="0dp"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        app:srcCompat="@drawable/heart_action_icon" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

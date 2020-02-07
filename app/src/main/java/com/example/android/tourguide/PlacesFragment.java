@@ -33,9 +33,7 @@ public class PlacesFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.category_list, container, false);
 
         final ArrayList<GuideCard> places = new ArrayList<>();
-        places.add(new GuideCard("C.A.K.E", R.drawable.cake_image, getString(R.string.cake_confectionary_description), "places", 52, 56));
-        places.add(new GuideCard("Ресторан «Терраса»", R.drawable.terrasa, getString(R.string.terrasa_restaurant_description), "places", 43, 39));
-        places.add(new GuideCard("Rыба", R.drawable.ryba, getString(R.string.ryba_restaurant_description), "places", 108, 62));
+        places.add(new GuideCard("Планетарий № 1", R.drawable.cake_image, getString(R.string.places_planetariy_description), "places", 571, 348));
 
         recyclerView = rootView.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);

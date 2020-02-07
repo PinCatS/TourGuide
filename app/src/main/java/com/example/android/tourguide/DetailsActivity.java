@@ -2,6 +2,7 @@ package com.example.android.tourguide;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -65,6 +66,12 @@ public class DetailsActivity extends AppCompatActivity {
                 }
             }
         });
+
+        TextView textView = findViewById(R.id.details_title);
+        textView.setText(card.getTitle());
+
+        textView = findViewById(R.id.details_description);
+        textView.setText(card.getDescription());
 
         imageModelArrayList = new ArrayList<>();
         imageModelArrayList = populateList();
