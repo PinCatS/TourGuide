@@ -39,15 +39,17 @@ public class DetailsActivity extends AppCompatActivity {
 
         final GuideCard card = (GuideCard) getIntent().getSerializableExtra("EXTRA_PLACE_OBJECT");
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+        final FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (card.isLiked()) {
                     card.dislike();
+                    fab.setImageResource(R.drawable.heart_action_icon);
                     Toast.makeText(DetailsActivity.this, "Disliked!", Toast.LENGTH_SHORT).show();
                 } else {
                     card.like();
+                    fab.setImageResource(R.drawable.heart_action_icon_filled);
                     Toast.makeText(DetailsActivity.this, "Liked!", Toast.LENGTH_SHORT).show();
                 }
             }
