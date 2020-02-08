@@ -21,11 +21,7 @@ public class DetailsActivity extends AppCompatActivity {
     private int MAX_TITLE_LENGTH = 18;
 
     private static ViewPager mPager;
-    private static int currentPage = 0;
-    private static int NUM_PAGES = 0;
     private ArrayList<Integer> imageModelArrayList;
-
-    private int[] myImageList = new int[]{R.drawable.cake_image, R.drawable.ryba, R.drawable.terrasa};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +63,7 @@ public class DetailsActivity extends AppCompatActivity {
                     scrollRange = appBarLayout.getTotalScrollRange();
                 }
                 if (scrollRange + verticalOffset == 0) {
-                    String title = card.getTitle();
+                    String title = DetailsActivity.this.getString(card.getTitleResource());
                     if (title.length() > MAX_TITLE_LENGTH) {
                         title = title.substring(0, MAX_TITLE_LENGTH) + "...";
                     }
@@ -81,22 +77,45 @@ public class DetailsActivity extends AppCompatActivity {
         });
 
         imageModelArrayList = new ArrayList<>();
-        imageModelArrayList = populateList();
+        imageModelArrayList = populateList(card.getCardImageList());
 
         init();
 
         TextView textView = findViewById(R.id.details_title);
-        textView.setText(card.getTitle());
+        textView.setText(this.getString(card.getTitleResource()));
 
         textView = findViewById(R.id.details_description);
-        textView.setText(card.getDescription());
+        textView.setText(this.getString(card.getDescriptionResource()));
+
+        textView = findViewById(R.id.date);
+        if (card.getDate() != -1) {
+            textView.setText(this.getString(card.getDate()));
+        } else {
+            textView.setVisibility(View.GONE);
+        }
+
+        textView = findViewById(R.id.address);
+        if (card.getAddress() != -1) {
+            textView.setText(this.getString(card.getAddress()));
+        } else {
+            textView.setVisibility(View.GONE);
+        }
+
+        textView = findViewById(R.id.cost);
+        if (card.getCost() != -1) {
+            textView.setText(this.getString(card.getCost()));
+        } else {
+            textView.setVisibility(View.GONE);
+            textView = findViewById(R.id.cost_label);
+            textView.setVisibility(View.GONE);
+        }
     }
 
-    private ArrayList<Integer> populateList() {
+    private ArrayList<Integer> populateList(int[] cardImageList) {
 
         ArrayList<Integer> list = new ArrayList<>();
 
-        for (Integer imageResourceId : myImageList) {
+        for (Integer imageResourceId : cardImageList) {
             list.add(imageResourceId);
         }
 
@@ -110,35 +129,15 @@ public class DetailsActivity extends AppCompatActivity {
 
         CirclePageIndicator indicator = findViewById(R.id.indicator);
 
-        indicator.setViewPager(mPager);
+        if (imageModelArrayList.size() == 1) {
+            indicator.setVisibility(View.GONE);
+        } else {
+            indicator.setViewPager(mPager);
+            final float density = getResources().getDisplayMetrics().density;
 
-        final float density = getResources().getDisplayMetrics().density;
-
-        //Set circle indicator radius
-        indicator.setRadius(5 * density);
-
-        NUM_PAGES = imageModelArrayList.size();
-
-        // Pager listener over indicator
-        indicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-            @Override
-            public void onPageSelected(int position) {
-                currentPage = position;
-
-            }
-
-            @Override
-            public void onPageScrolled(int pos, float arg1, int arg2) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int pos) {
-
-            }
-        });
-
+            //Set circle indicator radius
+            indicator.setRadius(5 * density);
+        }
     }
 
 }

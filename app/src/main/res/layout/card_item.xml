@@ -23,8 +23,7 @@
                 android:id="@+id/card_image"
                 android:layout_width="match_parent"
                 android:layout_height="240dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/cake_image" />
+                android:scaleType="centerCrop" />
 
             <TextView
                 android:id="@+id/card_title"
@@ -46,7 +45,7 @@
                 android:drawableLeft="@drawable/pin_icon"
                 android:drawablePadding="4dp"
                 android:paddingLeft="16dp"
-                android:text="удельный пр. 5, Санкт-Петербург" />
+                tools:text="@string/food_indian_address" />
 
             <ImageView
                 android:id="@+id/likes_icon"

@@ -3,32 +3,37 @@ package com.example.android.tourguide;
 import java.io.Serializable;
 
 public class GuideCard implements Serializable {
-    private String mTitle;
+    private int mTitleResourceId;
     private int mImageResourceId;
     private int mLikes = 0;
     private int mNumberOfReviews = 0;
-    private String mDescription;
+    private int mDescriptionResourceId;
     private String mCategory;
     private boolean mIsLiked = false;
+    private int[] mCardImageList;
+    private int mAddressResource;
+    private int mDateResource;
+    private int mCostResource;
 
-    GuideCard(String title, int imageResourceId, String description, String category) {
-        mTitle = title;
+    GuideCard(int titleResourceId, int imageResourceId, int descriptionResourceId,
+              int addressResource, int dateResource, int costResource,
+              String category,
+              int likes, int numberOfReview,
+              int[] cardImageList) {
+        mTitleResourceId = titleResourceId;
         mImageResourceId = imageResourceId;
-        mDescription = description;
-        mCategory = category;
-    }
-
-    GuideCard(String title, int imageResourceId, String description, String category, int likes, int numberOfReview) {
-        mTitle = title;
-        mImageResourceId = imageResourceId;
-        mDescription = description;
+        mDescriptionResourceId = descriptionResourceId;
         mNumberOfReviews = numberOfReview;
         mLikes = likes;
         mCategory = category;
+        mCardImageList = cardImageList;
+        mAddressResource = addressResource;
+        mDateResource = dateResource;
+        mCostResource = costResource;
     }
 
-    String getTitle() {
-        return mTitle;
+    int getTitleResource() {
+        return mTitleResourceId;
     }
 
     int getImageResourceId() {
@@ -43,12 +48,28 @@ public class GuideCard implements Serializable {
         return mNumberOfReviews;
     }
 
-    String getDescription() {
-        return mDescription;
+    int getDescriptionResource() {
+        return mDescriptionResourceId;
     }
 
     String getCategory() {
         return mCategory;
+    }
+
+    public int[] getCardImageList() {
+        return mCardImageList;
+    }
+
+    public int getAddress() {
+        return mAddressResource;
+    }
+
+    public int getDate() {
+        return mDateResource;
+    }
+
+    public int getCost() {
+        return mCostResource;
     }
 
     void like() {

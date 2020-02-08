@@ -92,26 +92,29 @@
                 tools:text="some tour description here" />
 
             <TextView
+                android:id="@+id/date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:drawableLeft="@drawable/date_icon"
                 android:drawablePadding="8dp"
-                android:text="Ежедневно с 11:00-12:00" />
+                tools:text="Ежедневно с 11:00-12:00" />
 
             <TextView
+                android:id="@+id/cost_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Стоимость"
+                android:text="@string/cost_string"
                 android:textAllCaps="true"
                 android:textSize="18sp" />
 
             <TextView
+                android:id="@+id/cost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="от 1500 р." />
+                tools:text="от 1500 р." />
 
             <TextView
                 android:id="@+id/address"
@@ -121,7 +124,7 @@
                 android:drawableLeft="@drawable/pin_icon"
                 android:drawablePadding="8dp"
                 android:linksClickable="true"
-                android:text="udelniy av. 5, Saint-Petersburg" />
+                tools:text="udelniy av. 5, Saint-Petersburg" />
 
         </LinearLayout>
 

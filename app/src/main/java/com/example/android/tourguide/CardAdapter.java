@@ -1,5 +1,6 @@
 package com.example.android.tourguide;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +40,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FoodViewHolder
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         GuideCard card = cards.get(position);
-        holder.cardTitle.setText(card.getTitle());
+        Context context = holder.cardTitle.getContext();
+        holder.cardTitle.setText(context.getString(card.getTitleResource()));
         holder.cardImage.setImageResource(card.getImageResourceId());
         holder.cardLikes.setText(Integer.toString(card.getLikes()));
     }
