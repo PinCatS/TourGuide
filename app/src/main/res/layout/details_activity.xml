@@ -102,7 +102,7 @@
         app:borderWidth="0dp"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end"
-        android:tint="@null"
+        app:tint="@null"
         app:srcCompat="@drawable/heart_action_icon" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
