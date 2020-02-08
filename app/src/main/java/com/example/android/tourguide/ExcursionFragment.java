@@ -1,8 +1,11 @@
 package com.example.android.tourguide;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +49,13 @@ public class ExcursionFragment extends Fragment {
             @Override
             public void onClick(View view, int position) {
                 GuideCard card = routes.get(position);
+
+                SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putInt("PREFERENCE_CURRENT_TAB", 3);
+                editor.apply();
+
+                Log.v("FoodFragment.java", "saving position");
 
                 Intent routesIntent = new Intent(getActivity(), DetailsActivity.class);
                 routesIntent.putExtra("EXTRA_PLACE_OBJECT", card);

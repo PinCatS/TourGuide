@@ -78,7 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="32dp"
                 android:textSize="24sp"
                 tools:text="Бабушкино лукошко" />
 
@@ -102,6 +102,7 @@
         app:borderWidth="0dp"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end"
+        android:tint="@null"
         app:srcCompat="@drawable/heart_action_icon" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

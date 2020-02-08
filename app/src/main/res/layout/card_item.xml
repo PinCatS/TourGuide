@@ -33,9 +33,20 @@
                 android:layout_below="@+id/card_image"
                 android:paddingLeft="16dp"
                 android:paddingTop="16dp"
+                android:layout_marginBottom="16dp"
                 android:textSize="24sp"
                 android:fontFamily="@font/font_family"
                 tools:text="Title" />
+
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/card_title"
+                android:drawableLeft="@drawable/pin_icon"
+                android:drawablePadding="4dp"
+                android:paddingLeft="16dp"
+                android:text="удельный пр. 5, Санкт-Петербург" />
 
             <ImageView
                 android:id="@+id/likes_icon"

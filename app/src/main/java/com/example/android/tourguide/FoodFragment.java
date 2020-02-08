@@ -1,8 +1,11 @@
 package com.example.android.tourguide;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +29,6 @@ public class FoodFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -49,6 +51,14 @@ public class FoodFragment extends Fragment {
 
                 Intent foodsIntent = new Intent(getActivity(), DetailsActivity.class);
                 foodsIntent.putExtra("EXTRA_PLACE_OBJECT", card);
+
+                SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putInt("PREFERENCE_CURRENT_TAB", 1);
+                editor.apply();
+
+                Log.v("FoodFragment.java", "saving position");
+
                 startActivity(foodsIntent);
             }
         };

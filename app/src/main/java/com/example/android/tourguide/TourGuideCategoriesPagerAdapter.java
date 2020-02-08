@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 public class TourGuideCategoriesPagerAdapter extends FragmentPagerAdapter {
 
-    private static final String[] CATEGORY_TITLES = {"Places", "Food", "Events", "Routes"};
+    private static final String[] CATEGORY_TITLES = {"Places", "Food", "Events", "Excursions"};
 
     TourGuideCategoriesPagerAdapter(FragmentManager fm) {
         super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
