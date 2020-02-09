@@ -37,15 +37,18 @@ public class FoodFragment extends Fragment {
         foods.add(new GuideCard(R.string.food_indian_title, R.drawable.indiyskiy_street_2_small, R.string.food_indian_description,
                 R.string.food_indian_address, R.string.food_indian_date, -1,
                 "food", 13, 132,
-                new int[]{R.drawable.indiysliy_stree_small, R.drawable.indiyskiy_street_2_small, R.drawable.indiysliy_stree_3_small}));
+                new int[]{R.drawable.indiysliy_stree_small, R.drawable.indiyskiy_street_2_small, R.drawable.indiysliy_stree_3_small},
+                "http://7spicesstreetfood.ru/"));
         foods.add(new GuideCard(R.string.food_rynok_title, R.drawable.rinok_dolgoozerniy_1_small, R.string.food_rynok_description,
                 R.string.food_rynok_address, R.string.food_rynok_date, -1,
                 "food", 43, 22,
-                new int[]{R.drawable.rinok_dolgoozerniy_1_small, R.drawable.rinok_dolgoozerniy_2_small, R.drawable.rinok_dolgoozerniy_3_small}));
+                new int[]{R.drawable.rinok_dolgoozerniy_1_small, R.drawable.rinok_dolgoozerniy_2_small, R.drawable.rinok_dolgoozerniy_3_small},
+                "https://tkdoz.ru/"));
         foods.add(new GuideCard(R.string.food_pivo_title, R.drawable.pivovarnya_small, R.string.food_pivo_description,
                 R.string.food_pivo_address, R.string.food_pivo_date, R.string.food_pivo_cost,
                 "food", 14, 25,
-                new int[]{R.drawable.pivovarnya_small}));
+                new int[]{R.drawable.pivovarnya_small},
+                "https://vk.com/karlandfriedrich"));
 
         RecyclerView recyclerView = rootView.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);

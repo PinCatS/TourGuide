@@ -24,6 +24,7 @@ public class DetailsActivity extends AppCompatActivity {
 
     private int MAX_TITLE_LENGTH = 18;
     private ArrayList<Integer> imageModelArrayList;
+    private GuideCard card;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class DetailsActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Get passed GuideCard object
-        final GuideCard card = (GuideCard) getIntent().getSerializableExtra("EXTRA_PLACE_OBJECT");
+        card = (GuideCard) getIntent().getSerializableExtra("EXTRA_PLACE_OBJECT");
 
         /*
          * Setup FAB button functionality.
@@ -117,7 +118,7 @@ public class DetailsActivity extends AppCompatActivity {
         tourGuideShareActionProvider.setShareOptionList(shareOptions);
 
         tourGuideShareActionProvider.setShareIntent(
-                Intent.createChooser(prepareShareIntent("http://google.com"),
+                Intent.createChooser(prepareShareIntent(card.getLinkUrl()),
                         DetailsActivity.this.getString(R.string.share_provider_all_title)));
         return true;
     }

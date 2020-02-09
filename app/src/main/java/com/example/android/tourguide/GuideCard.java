@@ -14,12 +14,13 @@ class GuideCard implements Serializable {
     private int mAddressResource;
     private int mDateResource;
     private int mCostResource;
+    private String mLinkUrl;
 
     GuideCard(int titleResourceId, int imageResourceId, int descriptionResourceId,
               int addressResource, int dateResource, int costResource,
               String category,
               int likes, int numberOfReview,
-              int[] cardImageList) {
+              int[] cardImageList, String linkUrl) {
         mTitleResourceId = titleResourceId;
         mImageResourceId = imageResourceId;
         mDescriptionResourceId = descriptionResourceId;
@@ -30,6 +31,7 @@ class GuideCard implements Serializable {
         mAddressResource = addressResource;
         mDateResource = dateResource;
         mCostResource = costResource;
+        mLinkUrl = linkUrl;
     }
 
     int getTitleResource() {
@@ -86,4 +88,7 @@ class GuideCard implements Serializable {
         return mIsLiked;
     }
 
+    public String getLinkUrl() {
+        return mLinkUrl;
+    }
 }

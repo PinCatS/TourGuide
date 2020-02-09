@@ -37,11 +37,13 @@ public class ExcursionFragment extends Fragment {
         excursions.add(new GuideCard(R.string.excursion_top_title, R.drawable.top_2_small, R.string.excursion_top_description,
                 -1, R.string.excursion_top_date, R.string.excursion_top_cost,
                 "excursions", 13, 132,
-                new int[]{R.drawable.top_2_small, R.drawable.top_1_small, R.drawable.top_3_small, R.drawable.top_4_small}));
+                new int[]{R.drawable.top_2_small, R.drawable.top_1_small, R.drawable.top_3_small, R.drawable.top_4_small},
+                "https://experience.tripster.ru/experience/18012/?utm_source=kudago&utm_medium=cpc&utm_campaign=saint-petersburg&utm_content=18012"));
         excursions.add(new GuideCard(R.string.excursion_secret_title, R.drawable.secret_2_small, R.string.excursion_secret_description,
                 -1, R.string.excursion_secret_date, R.string.excursion_secret_cost,
                 "excursions", 43, 22,
-                new int[]{R.drawable.secret_2_small, R.drawable.secret_1_small, R.drawable.secret_3_small}));
+                new int[]{R.drawable.secret_2_small, R.drawable.secret_1_small, R.drawable.secret_3_small},
+                "https://experience.tripster.ru/experience/16809/?utm_source=kudago&utm_medium=cpc&utm_campaign=saint-petersburg&utm_content=16809"));
 
         RecyclerView recyclerView = rootView.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
