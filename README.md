@@ -1,6 +1,10 @@
 # TourGuide
 Poject 7 at Udacity Android Basics nanodegree program
 
+This is an app with multiple screens, each of which lists a kind of attraction, national park, or historical monument for Saint-Petersburg city in Russia where I am living.
+
+I used all my knowledge I gained till project 7. The main requirement was to use View Pager and TabLayout as well as ListView/GridView or RecyclerView.
+
 ## Pre-requisites
 * Android SDK v29 (min SDK v21)
 * Android Build Tools v29.0.2
