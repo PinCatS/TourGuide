@@ -16,7 +16,6 @@
     <string name="food_pivo_title">Ресторан-пивоварня «Карл и Фридрих»</string>
     <string name="food_pivo_description">Почувствовать себя в старинной немецкой сказке можно, не покидая пределы региона. Найдётся в Петербурге и дом, стилизованный под баварское предместье, и биргартен, и небольшая авторская пивоварня.</string>
     <string name="food_pivo_address">Санкт-Петербург , ул. Южная дорога, д. 15</string>
-    <string name="food_pivo_date">пн–чт, вс 12:00–0:00\nпт, сб 12:00–1:00</string>
     <string name="food_pivo_cost">1 500 р.</string>
 
     <!-- Places -->
@@ -50,17 +49,20 @@
     <string name="excursion_secret_title">Экскурсия «Секретный Петербург: прогулка с фотографом»</string>
     <string name="excursion_secret_description">Фотопрогулка по знаковым нетуристическим местам города на Неве, позволяющим прочувствовать местный колорит.</string>
     <string name="excursion_secret_date">1 января – 29 февраля 10:00–18:00</string>
-    <string name="excursion_secret_cost">4600 за группу до 4 человек</string>
+    <string name="excursion_secret_cost">4600 р. за группу до 4 человек</string>
 
     <string name="cost_string">Стоимость</string>
-    <string name="reviews_count_string">(<xliff:g example="178" id="reviews_count_xliff">%d</xliff:g>)</string>
+    <string name="reviews_count_string" translatable="false">(<xliff:g example="178" id="reviews_count_xliff">%d</xliff:g>)</string>
 
     <string name="card_category_places">Места</string>
     <string name="card_category_food">Еда</string>
     <string name="card_category_events">События</string>
     <string name="card_category_excursions">Экскурсии</string>
-    <string name="action_share">Share</string>
+    <string name="action_share" translatable="false">Share</string>
     <string name="dialog_share_label">Поделиться...</string>
     <string name="dialog_share_option_share">Поделиться...</string>
     <string name="share_provider_all_title">Поделиться ссылкой используя...</string>
+    <string name="food_pivo_date">пн–чт, вс 12:00–0:00 пт, сб 12:00–1:00</string>
+    <string name="like_action">Лайк поставлен!</string>
+    <string name="dislike_action">Лайк убран!</string>
 </resources>

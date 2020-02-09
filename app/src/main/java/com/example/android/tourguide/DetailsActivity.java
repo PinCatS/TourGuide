@@ -54,11 +54,11 @@ public class DetailsActivity extends AppCompatActivity {
                 if (card.isLiked()) {
                     card.dislike();
                     fab.setImageResource(R.drawable.heart_action_icon);
-                    Toast.makeText(DetailsActivity.this, "Disliked!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DetailsActivity.this, getString(R.string.dislike_action), Toast.LENGTH_SHORT).show();
                 } else {
                     card.like();
                     fab.setImageResource(R.drawable.heart_action_icon_filled);
-                    Toast.makeText(DetailsActivity.this, "Liked!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DetailsActivity.this, getString(R.string.like_action), Toast.LENGTH_SHORT).show();
                 }
             }
         });
