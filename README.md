@@ -5,6 +5,8 @@ This is an app with multiple screens, each of which lists a kind of attraction, 
 
 I used all my knowledge I gained till project 7. The main requirement was to use View Pager and TabLayout as well as ListView/GridView or RecyclerView.
 
+Additionally share functionality was implemented using custom ShareActionProvider and Image slider. Also CoordinatorLayout with AppBarLayout was used to create animation while scrolling. 
+
 ## Pre-requisites
 * Android SDK v29 (min SDK v23)
 * Android Build Tools v29.0.2
