@@ -59,4 +59,8 @@
     <string name="card_category_food">Еда</string>
     <string name="card_category_events">События</string>
     <string name="card_category_excursions">Экскурсии</string>
+    <string name="action_share">Share</string>
+    <string name="dialog_share_label">Поделиться...</string>
+    <string name="dialog_share_option_share">Поделиться...</string>
+    <string name="share_provider_all_title">Поделиться ссылкой используя...</string>
 </resources>

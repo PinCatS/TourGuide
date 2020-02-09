@@ -1,12 +1,16 @@
 package com.example.android.tourguide;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.MenuItemCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.appbar.AppBarLayout;
@@ -26,9 +30,6 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.details_activity);
 
-        /*
-         *
-         * */
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null)
@@ -98,6 +99,36 @@ public class DetailsActivity extends AppCompatActivity {
 
         initSlider();
         fillLayoutWithCardDetails(card);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate menu resource file.
+        getMenuInflater().inflate(R.menu.menu_activity_details, menu);
+        // Locate MenuItem with ShareActionProvider
+        MenuItem item = menu.findItem(R.id.action_share);
+        // Fetch reference to the share action provider
+        TourGuideActionProvider tourGuideShareActionProvider =
+                (TourGuideActionProvider) MenuItemCompat.getActionProvider(item);
+
+        tourGuideShareActionProvider.setListTitle(DetailsActivity.this.getString(R.string.dialog_share_label));
+        ArrayList<String> shareOptions = new ArrayList<>();
+        shareOptions.add(DetailsActivity.this.getString(R.string.dialog_share_option_share));
+        tourGuideShareActionProvider.setShareOptionList(shareOptions);
+
+        tourGuideShareActionProvider.setShareIntent(
+                Intent.createChooser(prepareShareIntent("http://google.com"),
+                        DetailsActivity.this.getString(R.string.share_provider_all_title)));
+        return true;
+    }
+
+    public Intent prepareShareIntent(String url) {
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, url);
+        sendIntent.setType("text/plain");
+
+        return sendIntent;
     }
 
     private ArrayList<Integer> populateList(int[] cardImageList) {
