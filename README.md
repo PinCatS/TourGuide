@@ -6,7 +6,7 @@ This is an app with multiple screens, each of which lists a kind of attraction, 
 I used all my knowledge I gained till project 7. The main requirement was to use View Pager and TabLayout as well as ListView/GridView or RecyclerView.
 
 ## Pre-requisites
-* Android SDK v29 (min SDK v21)
+* Android SDK v29 (min SDK v23)
 * Android Build Tools v29.0.2
 
 ## Getting Started
