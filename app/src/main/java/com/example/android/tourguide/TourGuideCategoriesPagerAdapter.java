@@ -1,21 +1,31 @@
 package com.example.android.tourguide;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+
+/*
+ * View pager adapter for different card categories
+ * */
 public class TourGuideCategoriesPagerAdapter extends FragmentPagerAdapter {
 
-    private static final String[] CATEGORY_TITLES = {"Places", "Food", "Events", "Excursions"};
+    private String[] mCategoryLabels;
 
-    TourGuideCategoriesPagerAdapter(FragmentManager fm) {
+    TourGuideCategoriesPagerAdapter(FragmentManager fm, Context context) {
         super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        mCategoryLabels = new String[]{context.getString(R.string.card_category_places),
+                context.getString(R.string.card_category_food),
+                context.getString(R.string.card_category_events),
+                context.getString(R.string.card_category_excursions),};
     }
 
     @Override
     public int getCount() {
-        return CATEGORY_TITLES.length;
+        return mCategoryLabels.length;
     }
 
     @NonNull
@@ -34,7 +44,7 @@ public class TourGuideCategoriesPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return CATEGORY_TITLES[position];
+        return mCategoryLabels[position];
     }
 
 }

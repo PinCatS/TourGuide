@@ -45,7 +45,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="50dp"
                     app:centered="true"
-                    app:fillColor="#ffffffff"
+                    app:fillColor="@color/colorAccent"
                     app:pageColor="#44ffffff"
                     app:strokeColor="#00ffffff"
                     app:snap="false" />
@@ -71,8 +71,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingRight="24dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="24dp"
             android:orientation="vertical">
 
             <TextView
@@ -81,6 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:textSize="24sp"
+                android:textColor="@color/colorTextPrimary"
                 tools:text="Бабушкино лукошко" />
 
             <TextView
@@ -89,6 +90,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="16dp"
+                android:textColor="@color/colorTextSecondary"
+                android:textSize="18sp"
                 tools:text="some tour description here" />
 
             <TextView
@@ -97,7 +100,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
-                android:drawableLeft="@drawable/date_icon"
+                android:drawableStart="@drawable/date_icon"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="14sp"
                 android:drawablePadding="8dp"
                 tools:text="Ежедневно с 11:00-12:00" />
 
@@ -107,13 +112,15 @@
                 android:layout_height="wrap_content"
                 android:text="@string/cost_string"
                 android:textAllCaps="true"
-                android:textSize="18sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/cost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="14sp"
                 tools:text="от 1500 р." />
 
             <TextView
@@ -121,9 +128,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:autoLink="map"
-                android:drawableLeft="@drawable/pin_icon"
+                android:drawableStart="@drawable/pin_icon"
+                android:textColor="@color/colorTextPrimary"
                 android:drawablePadding="8dp"
                 android:linksClickable="true"
+                android:textSize="14sp"
                 tools:text="udelniy av. 5, Saint-Petersburg" />
 
         </LinearLayout>
@@ -135,7 +144,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:backgroundTint="#f44336"
+        android:backgroundTint="@color/colorAccent"
         app:borderWidth="0dp"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end"

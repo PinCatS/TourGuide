@@ -19,8 +19,6 @@ import java.util.ArrayList;
 public class DetailsActivity extends AppCompatActivity {
 
     private int MAX_TITLE_LENGTH = 18;
-
-    private static ViewPager mPager;
     private ArrayList<Integer> imageModelArrayList;
 
     @Override
@@ -28,13 +26,25 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.details_activity);
 
+        /*
+         *
+         * */
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null)
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        // Get passed GuideCard object
         final GuideCard card = (GuideCard) getIntent().getSerializableExtra("EXTRA_PLACE_OBJECT");
 
+        /*
+         * Setup FAB button functionality.
+         * When user pushes the button, like is increased.
+         * If user presses it again,  like is taken back.
+         *
+         * Also toast messages are displayed during pushes.
+         * Like icon changes depending on liked/not-liked states
+         * */
         final FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +61,12 @@ public class DetailsActivity extends AppCompatActivity {
             }
         });
 
+        /*
+         * That piece of code handles the visibility of the toolbar title.
+         * Title appears only when toolbar becomes pinned.
+         *
+         * When the screen is scrolled up, verticalOffset is being decreased till scrollRange.
+         * */
         final CollapsingToolbarLayout toolbarLayout = findViewById(R.id.toolbar_layout);
         AppBarLayout appBarLayout = findViewById(R.id.app_bar);
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
@@ -64,6 +80,7 @@ public class DetailsActivity extends AppCompatActivity {
                 }
                 if (scrollRange + verticalOffset == 0) {
                     String title = DetailsActivity.this.getString(card.getTitleResource());
+                    // trim the toolbar title in case it doesn't fit
                     if (title.length() > MAX_TITLE_LENGTH) {
                         title = title.substring(0, MAX_TITLE_LENGTH) + "...";
                     }
@@ -79,8 +96,56 @@ public class DetailsActivity extends AppCompatActivity {
         imageModelArrayList = new ArrayList<>();
         imageModelArrayList = populateList(card.getCardImageList());
 
-        init();
+        initSlider();
+        fillLayoutWithCardDetails(card);
+    }
 
+    private ArrayList<Integer> populateList(int[] cardImageList) {
+
+        ArrayList<Integer> list = new ArrayList<>();
+
+        if (cardImageList != null) {
+            for (Integer imageResourceId : cardImageList) {
+                list.add(imageResourceId);
+            }
+        }
+
+        return list;
+    }
+
+    /*
+     * Initializes image slider
+     *
+     * Basically it sets up view pager with an adapter and sets circle indicators
+     * if there is only one image, it removes indicator layout
+     * */
+    private void initSlider() {
+
+        ViewPager mPager = findViewById(R.id.pager);
+        mPager.setAdapter(new SlidingImageAdapter(DetailsActivity.this, imageModelArrayList));
+
+        CirclePageIndicator indicator = findViewById(R.id.indicator);
+
+        if (imageModelArrayList.size() == 1) {
+            indicator.setVisibility(View.GONE);
+        } else {
+            indicator.setViewPager(mPager);
+            final float density = getResources().getDisplayMetrics().density;
+
+            //Set circle indicator radius
+            indicator.setRadius(5 * density);
+        }
+    }
+
+    /*
+     * Fills details layout with cards data
+     *
+     * Some data can be absent. In that case the view which corresponds to the data is removed
+     * from the layout.
+     *
+     * @param card a GuideCard object which contains all information about the tour card
+     * */
+    private void fillLayoutWithCardDetails(GuideCard card) {
         TextView textView = findViewById(R.id.details_title);
         textView.setText(this.getString(card.getTitleResource()));
 
@@ -110,34 +175,4 @@ public class DetailsActivity extends AppCompatActivity {
             textView.setVisibility(View.GONE);
         }
     }
-
-    private ArrayList<Integer> populateList(int[] cardImageList) {
-
-        ArrayList<Integer> list = new ArrayList<>();
-
-        for (Integer imageResourceId : cardImageList) {
-            list.add(imageResourceId);
-        }
-
-        return list;
-    }
-
-    private void init() {
-
-        mPager = findViewById(R.id.pager);
-        mPager.setAdapter(new SlidingImageAdapter(DetailsActivity.this, imageModelArrayList));
-
-        CirclePageIndicator indicator = findViewById(R.id.indicator);
-
-        if (imageModelArrayList.size() == 1) {
-            indicator.setVisibility(View.GONE);
-        } else {
-            indicator.setViewPager(mPager);
-            final float density = getResources().getDisplayMetrics().density;
-
-            //Set circle indicator radius
-            indicator.setRadius(5 * density);
-        }
-    }
-
 }

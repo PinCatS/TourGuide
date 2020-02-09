@@ -44,6 +44,15 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FoodViewHolder
         holder.cardTitle.setText(context.getString(card.getTitleResource()));
         holder.cardImage.setImageResource(card.getImageResourceId());
         holder.cardLikes.setText(Integer.toString(card.getLikes()));
+        if (card.getAddress() != -1) {
+            holder.cardInfo.setText(context.getString(card.getAddress()));
+            holder.cardInfo.setCompoundDrawablesWithIntrinsicBounds(context.getResources().getDrawable(R.drawable.pin_icon), null, null, null);
+        } else if (card.getDate() != -1) {
+            holder.cardInfo.setText(context.getString(card.getDate()));
+            holder.cardInfo.setCompoundDrawablesWithIntrinsicBounds(context.getResources().getDrawable(R.drawable.date_icon), null, null, null);
+        } else {
+            holder.cardInfo.setVisibility(View.GONE);
+        }
     }
 
     // Return the size of your dataset (invoked by the layout manager)
@@ -56,6 +65,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FoodViewHolder
         TextView cardTitle;
         ImageView cardImage;
         TextView cardLikes;
+        TextView cardInfo;
         RecyclerViewClickListener mListener;
 
         FoodViewHolder(View v, RecyclerViewClickListener listener) {
@@ -65,6 +75,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.FoodViewHolder
             cardTitle = v.findViewById(R.id.card_title);
             cardImage = v.findViewById(R.id.card_image);
             cardLikes = v.findViewById(R.id.likes_count);
+            cardInfo = v.findViewById(R.id.card_info);
         }
 
         @Override

@@ -9,9 +9,9 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/mtrl_card_spacing"
-        android:layout_marginTop="@dimen/mtrl_card_spacing"
-        android:layout_marginRight="@dimen/mtrl_card_spacing"
+        android:layout_marginLeft="@dimen/card_spacing"
+        android:layout_marginTop="@dimen/card_spacing"
+        android:layout_marginRight="@dimen/card_spacing"
         app:cardElevation="2dp">
 
         <RelativeLayout
@@ -23,49 +23,54 @@
                 android:id="@+id/card_image"
                 android:layout_width="match_parent"
                 android:layout_height="240dp"
-                android:scaleType="centerCrop" />
+                android:scaleType="centerCrop"
+                tools:background="@tools:sample/backgrounds/scenic" />
 
             <TextView
                 android:id="@+id/card_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/card_image"
-                android:paddingLeft="16dp"
+                android:layout_marginBottom="8dp"
                 android:paddingTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:textSize="24sp"
-                android:fontFamily="@font/font_family"
+                android:paddingStart="16dp"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="18sp"
                 tools:text="Title" />
 
-            <TextView
-                android:id="@+id/address"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/card_title"
-                android:drawableLeft="@drawable/pin_icon"
-                android:drawablePadding="4dp"
-                android:paddingLeft="16dp"
-                tools:text="@string/food_indian_address" />
+                android:orientation="horizontal"
+                android:paddingStart="16dp">
 
-            <ImageView
-                android:id="@+id/likes_icon"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:layout_below="@id/card_title"
-                android:layout_alignParentEnd="true"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="16dp"
-                android:src="@mipmap/card_like_filled_icon" />
+                <TextView
+                    android:id="@+id/card_info"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:drawableStart="@drawable/pin_icon"
+                    android:drawablePadding="4dp"
+                    android:textColor="@color/colorTextSecondary"
+                    android:textSize="14sp"
+                    tools:text="@string/food_indian_address" />
 
-            <TextView
-                android:id="@+id/likes_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/card_title"
-                android:layout_toLeftOf="@id/likes_icon"
-                android:fontFamily="@font/font_family"
-                android:textSize="14sp"
-                tools:text="67" />
+                <TextView
+                    android:id="@+id/likes_count"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:drawableStart="@mipmap/card_like_filled_icon"
+                    android:gravity="end"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="16dp"
+                    android:textColor="@color/colorTextSecondary"
+                    android:textSize="14sp"
+                    tools:text="67" />
+
+            </LinearLayout>
 
         </RelativeLayout>
 

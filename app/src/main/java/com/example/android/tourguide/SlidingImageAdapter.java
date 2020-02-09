@@ -7,42 +7,44 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 import java.util.ArrayList;
 
+/*
+ * View pager adapter for sliding images in the DetailsActivity
+ * */
 public class SlidingImageAdapter extends PagerAdapter {
 
-    private ArrayList<Integer> imageModelArrayList;
-    private LayoutInflater inflater;
-    private Context context;
+    private ArrayList<Integer> mImageModelArrayList;
+    private LayoutInflater mInflater;
 
-
-    public SlidingImageAdapter(Context context, ArrayList<Integer> imageModelArrayList) {
-        this.context = context;
-        this.imageModelArrayList = imageModelArrayList;
-        inflater = LayoutInflater.from(context);
+    SlidingImageAdapter(Context context, ArrayList<Integer> imageModelArrayList) {
+        mImageModelArrayList = imageModelArrayList;
+        mInflater = LayoutInflater.from(context);
     }
 
     @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
+    public void destroyItem(ViewGroup container, int position, @NonNull Object object) {
         container.removeView((View) object);
     }
 
     @Override
     public int getCount() {
-        return imageModelArrayList.size();
+        return mImageModelArrayList.size();
     }
 
+    @NonNull
     @Override
     public Object instantiateItem(ViewGroup view, int position) {
-        View imageLayout = inflater.inflate(R.layout.sliding_image_layout, view, false);
+        View imageLayout = mInflater.inflate(R.layout.sliding_image_layout, view, false);
 
         assert imageLayout != null;
         final ImageView imageView = imageLayout.findViewById(R.id.sliding_image);
 
 
-        imageView.setImageResource(imageModelArrayList.get(position));
+        imageView.setImageResource(mImageModelArrayList.get(position));
 
         view.addView(imageLayout, 0);
 
@@ -50,7 +52,7 @@ public class SlidingImageAdapter extends PagerAdapter {
     }
 
     @Override
-    public boolean isViewFromObject(View view, Object object) {
+    public boolean isViewFromObject(View view, @NonNull Object object) {
         return view.equals(object);
     }
 

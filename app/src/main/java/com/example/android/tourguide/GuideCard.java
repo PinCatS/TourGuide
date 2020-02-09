@@ -2,14 +2,14 @@ package com.example.android.tourguide;
 
 import java.io.Serializable;
 
-public class GuideCard implements Serializable {
+class GuideCard implements Serializable {
     private int mTitleResourceId;
     private int mImageResourceId;
-    private int mLikes = 0;
-    private int mNumberOfReviews = 0;
+    private int mLikes;
+    private int mNumberOfReviews;
     private int mDescriptionResourceId;
     private String mCategory;
-    private boolean mIsLiked = false;
+    private boolean mIsLiked;
     private int[] mCardImageList;
     private int mAddressResource;
     private int mDateResource;
@@ -56,19 +56,19 @@ public class GuideCard implements Serializable {
         return mCategory;
     }
 
-    public int[] getCardImageList() {
+    int[] getCardImageList() {
         return mCardImageList;
     }
 
-    public int getAddress() {
+    int getAddress() {
         return mAddressResource;
     }
 
-    public int getDate() {
+    int getDate() {
         return mDateResource;
     }
 
-    public int getCost() {
+    int getCost() {
         return mCostResource;
     }
 

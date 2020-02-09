@@ -54,4 +54,9 @@
 
     <string name="cost_string">Стоимость</string>
     <string name="reviews_count_string">(<xliff:g example="178" id="reviews_count_xliff">%d</xliff:g>)</string>
+
+    <string name="card_category_places">Места</string>
+    <string name="card_category_food">Еда</string>
+    <string name="card_category_events">События</string>
+    <string name="card_category_excursions">Экскурсии</string>
 </resources>

@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,20 +20,19 @@ import java.util.ArrayList;
  */
 public class ExcursionFragment extends Fragment {
 
-    private RecyclerView recyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager layoutManager;
-
     public ExcursionFragment() {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View rootView = inflater.inflate(R.layout.category_list, container, false);
 
+        /*
+         * Create ist of cards for testing
+         * */
         final ArrayList<GuideCard> excursions = new ArrayList<>();
         excursions.add(new GuideCard(R.string.excursion_top_title, R.drawable.top_2_small, R.string.excursion_top_description,
                 -1, R.string.excursion_top_date, R.string.excursion_top_cost,
@@ -45,32 +43,43 @@ public class ExcursionFragment extends Fragment {
                 "excursions", 43, 22,
                 new int[]{R.drawable.secret_2_small, R.drawable.secret_1_small, R.drawable.secret_3_small}));
 
-        recyclerView = rootView.findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = rootView.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
 
         // use a linear layout manager
-        layoutManager = new LinearLayoutManager(getActivity());
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
 
+        /*
+         * On card click, user moves to Details activity
+         * */
         RecyclerViewClickListener listener = new RecyclerViewClickListener() {
             @Override
             public void onClick(View view, int position) {
                 GuideCard card = excursions.get(position);
 
+                /*
+                 * Before moving to Details activity, save current tab, so
+                 * when user returned back to the same tab
+                 * */
                 SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putInt("PREFERENCE_CURRENT_TAB", 3);
                 editor.apply();
 
-                Log.v("FoodFragment.java", "saving position");
-
+                /*
+                 * We are passing CardGuide object to be able to retrieve all information
+                 * */
                 Intent routesIntent = new Intent(getActivity(), DetailsActivity.class);
                 routesIntent.putExtra("EXTRA_PLACE_OBJECT", card);
                 startActivity(routesIntent);
             }
         };
 
-        mAdapter = new CardAdapter(excursions, listener);
+        /*
+         * Setting the adapter to list cards
+         * */
+        RecyclerView.Adapter mAdapter = new CardAdapter(excursions, listener);
         recyclerView.setAdapter(mAdapter);
 
         return rootView;
